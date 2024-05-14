@@ -27,6 +27,12 @@ locals {
     env      = "Dev"
     owner    = "Felipe Arciniegas"
   }
+
+  tags2 = {
+    workload = "Lab Terraform"
+    env      = "Dev"
+    owner    = "Fredy Patino"
+  }
 }
 
 #

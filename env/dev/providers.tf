@@ -6,6 +6,6 @@ provider "aws" {
   profile = var.profile
 
 default_tags {
-    tags = local.tags
+    tags = local.tags2
   }
 }
