@@ -15,7 +15,7 @@ variable "aws_region" {
 #
 variable "profile" {
   default     = ""
-  description = "Profile AWS"
+  description = "Profile AWS - Lab"
 }
 
 #
