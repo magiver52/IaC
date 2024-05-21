@@ -1,5 +1,10 @@
-# Resource S3
-resource "aws_s3_bucket" "bucket" {
-  count = length(var.bucket-s3)
-  bucket = join("-", tolist(["bucket", var.environment, var.bucket-s3[count.index]]))
+##################################
+# Modulos Principal
+##################################
+module "s3" {
+  source = "../../modules/S3/"
+  client = var.client
+  functionality = var.functionality
+  environment = var.environment
+  s3_config = var.s3_config
 }

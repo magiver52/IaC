@@ -61,3 +61,7 @@ variable "functionality" {
   description = "Funcionabilidad"
 }
 
+variable "s3_config" {
+  default = ""
+  description = "Definiciones S3"
+}

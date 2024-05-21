@@ -24,7 +24,7 @@ variable "profile" {
 locals {
   tags = {
     workload = "Lab Terraform"
-    env      = "qa"
+    env      = "Produccion"
     owner    = "Felipe Arciniegas"
   }
 }
