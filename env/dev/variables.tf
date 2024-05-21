@@ -29,9 +29,10 @@ locals {
   }
 
   tags2 = {
-    workload = "Lab Terraform"
-    env      = "Dev"
-    owner    = "Fredy Patino"
+    workload    = "Lab Terraform"
+    env         = "Dev"
+    owner       = "Fredy Patino"
+    presupuesto = "500"
   }
 }
 
@@ -39,10 +40,24 @@ locals {
 # variables S3
 #
 variable "bucket-s3" {
-  default = ["linux01", "linux02", "linux03"]
+  default     = ["linux01", "linux02", "linux03"]
   description = "Listado Bucket S3"
 }
 
 variable "environment" {
   default = ""
 }
+
+##################################
+# Variables del Module S3
+##################################
+variable "client" {
+  default = ""
+  description = "Cliente de la solucion"
+}
+
+variable "functionality" {
+  default = ""
+  description = "Funcionabilidad"
+}
+
