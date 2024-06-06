@@ -65,3 +65,8 @@ variable "s3_config" {
   default = ""
   description = "Definiciones S3"
 }
+
+variable "tags" {
+    type = map(string)
+    default = {}
+}

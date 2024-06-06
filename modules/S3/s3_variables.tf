@@ -5,6 +5,7 @@ variable "s3_config" {
   type = list(object({
     account     = string
     application = string
+    versioning  = string
     }
   ))
 }
@@ -22,6 +23,10 @@ variable "functionality" {
 variable "environment" {
   type        = string
   description = "Ambiente"
+}
+
+variable "tags" {
+  type = map(string)
 }
 
 #####################################################

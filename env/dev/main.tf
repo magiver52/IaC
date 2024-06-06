@@ -7,4 +7,5 @@ module "s3" {
   functionality = var.functionality
   environment = var.environment
   s3_config = var.s3_config
+  tags = var.tags
 }
