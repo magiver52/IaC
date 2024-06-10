@@ -11,4 +11,3 @@ resource "aws_s3_bucket_versioning" "versioning" {
     status = var.s3_config[count.index].versioning
   }
 }
-

@@ -70,3 +70,26 @@ variable "tags" {
     type = map(string)
     default = {}
 }
+
+variable "application" {
+  description = "Definicion de cliente"
+  type        = string
+}
+
+variable "cost_center" {
+  description = "Centro de costos (9904, 6621, 1222...)"
+  type        = string
+  nullable    = false
+}
+
+variable "owner" {
+  description = "Nombre de la persona que está encargada del Proyecto"
+  type        = string
+  default = "Fredy Patino"
+}
+
+variable "area" {
+  description = "talent-solutions, cloudops, etc…"
+  type        = string
+  default = "infra"
+}
