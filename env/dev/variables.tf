@@ -93,3 +93,11 @@ variable "area" {
   type        = string
   default = "infra"
 }
+
+####################################################################
+# Variables del Module S3
+####################################################################
+variable "cidrblock" {
+ description = ""
+ type = string
+}

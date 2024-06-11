@@ -1,4 +1,77 @@
 ####################################################################
+# Modulos Principal VPC
+####################################################################
+module "vpc" {
+  source        = "../../modules/VPC"
+  client        = var.client
+  environment   = var.environment
+  functionality = var.functionality
+  tags          = var.tags
+  create_vpc    = true
+
+  vpc_config = {
+    cidr_block = "10.0.0.0/16"
+  }
+
+  subnets = [
+    {
+      cidr_block              = "10.0.1.0/24"
+      availability_zone       = "us-east-1a"
+      map_public_ip_on_launch = false
+      tipo_subnet             = "private"
+    },
+    {
+      cidr_block              = "10.0.2.0/24"
+      availability_zone       = "us-east-1b"
+      map_public_ip_on_launch = false
+      tipo_subnet             = "private"
+    },
+    {
+      cidr_block              = "10.0.3.0/24"
+      availability_zone       = "us-east-1a"
+      map_public_ip_on_launch = true
+      tipo_subnet             = "public"
+    }
+  ]
+}
+
+####################################################################
+# Modulos Principal VPC - si la VPC ya existe
+####################################################################
+
+# module "vpc" {
+#   source        = "../../modules/VPC"
+#   client        = var.client
+#   environment   = var.environment
+#   functionality = var.functionality
+#   tags          = var.tags
+#   create_vpc    = false
+
+#   existing_vpc_id = "vpc-12345678" # Se pasa el ID de la VPC
+
+#   subnets = [
+#     {
+#       cidr_block              = "10.0.1.0/24"
+#       availability_zone       = "us-east-2a"
+#       map_public_ip_on_launch = false
+#       tipo_subnet             = "private"
+#     },
+#     {
+#       cidr_block              = "10.0.2.0/24"
+#       availability_zone       = "us-east-2b"
+#       map_public_ip_on_launch = false
+#       tipo_subnet             = "private"
+#     },
+#     {
+#       cidr_block              = "10.0.3.0/24"
+#       availability_zone       = "us-east-2c"
+#       map_public_ip_on_launch = true
+#       tipo_subnet             = "public"
+#     }
+#   ]
+# }
+
+####################################################################
 # Modulos Principal S3
 ####################################################################
 module "s3" {
@@ -201,29 +274,29 @@ module "s3_dev" {
   environment   = var.environment
   s3_config = [
     {
-      ticket       = "1234"
-      application  = "cdn"
-      kms_key_id   = module.kms_s3.kms_info[0]["key_id"]
-      accessclass  = "private"
-      versioning   = "Enabled"
+      ticket      = "1234"
+      application = "cdn"
+      kms_key_id  = module.kms_s3.kms_info[0]["key_id"]
+      accessclass = "private"
+      versioning  = "Enabled"
       statements = [
-                {
-                    sid = "PolicyForCloudFrontPrivateContent"
-                    actions = [
-                        "s3:GetObject"
-                    ]
-                    effect = "Allow"
-                    type = "Service"
-                    identifiers = ["cloudfront.amazonaws.com"]
-                    condition = [
-                        /*
+        {
+          sid = "PolicyForCloudFrontPrivateContent"
+          actions = [
+            "s3:GetObject"
+          ]
+          effect      = "Allow"
+          type        = "Service"
+          identifiers = ["cloudfront.amazonaws.com"]
+          condition = [
+            /*
                         {
                             test = "StringEquals"
                             variable = "AWS:SourceArn"
                             values = ["arn:aws:cloudfront::${local.common_vars.inputs.account}:distribution/E9AHCQ8APS2WQ"]
                         }*/
-                    ]
-                }
+          ]
+        }
       ]
     }
   ]
