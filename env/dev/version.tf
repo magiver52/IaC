@@ -8,6 +8,7 @@ required_providers {
     }
   }
 
+# tfstate - remoto
 # backend "s3" {
 #     bucket         = "linuxeroscostate"
 #     key            = "terraform-tfstate"
