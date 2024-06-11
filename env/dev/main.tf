@@ -31,6 +31,18 @@ module "vpc" {
       availability_zone       = "us-east-1a"
       map_public_ip_on_launch = true
       tipo_subnet             = "public"
+    },
+    {
+      cidr_block              = "10.0.4.0/24"
+      availability_zone       = "us-east-1b"
+      map_public_ip_on_launch = true
+      tipo_subnet             = "public"
+    },
+    {
+      cidr_block              = "10.0.5.0/24"
+      availability_zone       = "us-east-1c"
+      map_public_ip_on_launch = true
+      tipo_subnet             = "private"
     }
   ]
 }
